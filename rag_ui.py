@@ -40,10 +40,6 @@ st.set_page_config(layout="wide")
 # ******* padding height
 padding_height()
 
-# ******* list docs json
-with open(LIST_DOC_FILE, "r") as file:
-    LIST_DOCS = json.load(file)
-
 def save_list_to_json(list_docs: list) -> None:
     """
     Saves a list of dictionaries to a JSON file.
@@ -66,8 +62,8 @@ def initialize_db():
     """
     Initiate json to save topic chat
     """
-    
-    # ******* initiate default format json
+    DB_FILE = "DB_FILE.json"
+    LIST_DOC_FILE = "LIST_DOC.json"
     default_db = [
         {
             "topic": "New Chat",
@@ -76,20 +72,39 @@ def initialize_db():
             "document": ""
         }
     ]
+    default_db_list = [
+        {
+            "course_id": "course_id",
+            "course_name": "course_name"
+        }
+    ]
     
-    if not os.path.exists(DB_FILE):
-        with open(DB_FILE, 'w') as file:
-            json.dump(default_db, file, indent=2)
-    else:
-        # ******* Check if file is empty or invalid
-        try:
-            with open(DB_FILE, 'r') as file:
-                json.load(file)
-        except json.JSONDecodeError:
-            # ******* If file is empty or invalid, write default structure
-            with open(DB_FILE, 'w') as file:
-                json.dump(default_db, file, indent=2)
+    paths = [DB_FILE, LIST_DOC_FILE]
+    default_dbs = [default_db, default_db_list]
+    
+    # ***** Check if both json file not exists yet ***** 
+    for index in range(2): 
+        if not os.path.exists(paths[index]): 
+            with open(paths[index], 'w') as file: 
+                json.dump(default_dbs[index], file, indent=2)
+        else: 
+            # ******* Check if file is empty or invalid
+            try:
+                with open(paths[index], 'r') as file:
+                    json.load(file)
+            except json.JSONDecodeError:
+                # ******* If file is empty or invalid, write default structure
+                
+                with open(paths[index], 'w') as file:
+                    json.dump(default_db, file, indent=2)
+                
+# ***** Run initialize db *****
+initialize_db()
 
+# **** Open list doc file *****
+with open(LIST_DOC_FILE, "r") as file:
+    LIST_DOCS = json.load(file)
+        
 # ******* load chat history
 def load_chat_history():
     """
@@ -294,8 +309,7 @@ def rag_ui():
     
     Handles interactions for the Akabot application.
     """
-    # ***** initiate db
-    initialize_db()
+
     # ***** styling
     styling()
     # ***** Load existing chat history
