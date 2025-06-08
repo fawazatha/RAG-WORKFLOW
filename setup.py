@@ -2,7 +2,9 @@ import os
 import logging
 from dotenv import load_dotenv 
 import os 
+import streamlit as st 
 
+api_key = st.secrets["api"]
 load_dotenv(override=True)
 
 logging.basicConfig(
@@ -15,11 +17,14 @@ logging.basicConfig(
 LOGGER = logging.getLogger(__name__)
 LOGGER.info("Init Global Variable")
 
-GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY')
-ASTRADB_TOKEN_KEY = os.getenv("ASTRADB_TOKEN_KEY")
-ASTRADB_API_ENDPOINT = os.getenv("ASTRADB_API_ENDPOINT")
-ASTRADB_COLLECTION_NAME = os.getenv("ASTRADB_COLLECTION_NAME")
-ASTRADB_KEYSPACE_NAME = os.getenv("ASTRADB_KEYSPACE_NAME")
+GOOGLE_API_KEY = api_key['GOOGLE_API_KEY']
+ASTRADB_TOKEN_KEY = api_key["ASTRADB_TOKEN_KEY"]
+ASTRADB_API_ENDPOINT = api_key["ASTRADB_API_ENDPOINT"]
+ASTRADB_COLLECTION_NAME = api_key["ASTRADB_COLLECTION_NAME"]
+ASTRADB_KEYSPACE_NAME = api_key["ASTRADB_KEYSPACE_NAME"]
 
-LIST_DOC_FILE = 'LIST_DOC.json'  
-DB_FILE = 'DB_FILE.json'         
+DB_FILE = api_key['DATABASE_CHAT_TOPIC']
+LIST_DOC_FILE = api_key["DATA_LIST_DOC"]
+
+# LIST_DOC_FILE = 'LIST_DOC.json'  
+# DB_FILE = 'DB_FILE.json'         

@@ -35,8 +35,6 @@ from validator.data_type_validatation           import (validate_dict_input,
                                                         validate_list_input, 
                                                         validate_string_input)
 
-
-
 st.set_page_config(layout="wide")
 
 # ******* padding height

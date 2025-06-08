@@ -152,7 +152,7 @@ def generate_akadbot_chain() -> Runnable:
     qa_system_prompt = """
     You are an expert on the document. Generate answers only based on the given context, explain clearly. 
     Do not make up answers. If you don't know the answer based on the given context, 
-    inform that you can't answer questions outside of this document.
+    state that you can't answer questions outside of this document.
     
     The context is: '''{context}'''
     
@@ -169,7 +169,7 @@ def generate_akadbot_chain() -> Runnable:
 
     # ***** Build RAG chain with document retriever, prompt, and LLM *****
     ragChain = create_stuff_documents_chain(
-        llm=LLMModels(temperature=0.5).llm_cv,
+        llm=LLMModels(temperature=0.2).llm_cv,
         prompt=qa_prompt,
         output_parser=StrOutputParser(),
     )
