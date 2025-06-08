@@ -13,7 +13,6 @@ from langchain_core.messages                import HumanMessage, AIMessage, Base
 from langchain_core.documents               import Document
 from langchain_core.runnables               import Runnable
 from langchain_core.output_parsers          import StrOutputParser
-from langchain_community.callbacks          import get_openai_callback
 from langchain.chains.combine_documents     import create_stuff_documents_chain
 
 # ***** IMPORTS MODELS *****
