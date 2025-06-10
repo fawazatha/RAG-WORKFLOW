@@ -18,6 +18,7 @@ ASTRADB_KEYSPACE_NAME=your_keyspace_name
 ASTRADB_COLLECTION_NAME=your_collection_name
 
 Note: Keep your .env file secret and do not commit it to version control.
+```
 
 ---
 
