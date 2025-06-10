@@ -2,7 +2,7 @@
 
 ![alt text](images/image.png)
 
-A Streamlit-based application demonstrating a Retrieval-Augmented Generation (RAG) workflow with semantic chunking, leveraging Google Gemini APIs and AstraDB for vector storage and retrieval.
+A Streamlit-based application demonstrating a Retrieval-Augmented Generation (RAG) workflow with semantic chunking and chat history, leveraging Google Gemini APIs and AstraDB for vector storage and retrieval.
 
 ---
 
