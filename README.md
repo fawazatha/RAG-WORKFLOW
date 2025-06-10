@@ -37,7 +37,6 @@ Or using SSH:
 git clone git@github.com:fawazatha/RAG-WORKFLOW.git
 ```
 
-## Installation 
 2. Navigate into the cloned directory: 
 ```bash
 cd RAG-WORKFLOW
